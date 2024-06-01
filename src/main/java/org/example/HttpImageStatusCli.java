@@ -19,11 +19,12 @@ public class HttpImageStatusCli {
                 if (!isStatusValid(enter)) {
                     logger.warning("You entered an invalid status code\n" +
                             "There is no an image for this HTTP status: " + enter);
-                    scanner.next();
+                } else {
+                    logger.info("a valid status code: " + enter);
+                    HttpStatusImageDownloader.downloadStatusImage(enter);
+                    break;
                 }
-                logger.info("a valid status code: " + enter);
-                HttpStatusImageDownloader.downloadStatusImage(enter);
-                break;
+
             } else {
                 logger.warning("Invalid input. Please enter numbers only.");
                 scanner.next();
