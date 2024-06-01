@@ -15,7 +15,7 @@ public class HttpStatusChecker {
 
     public static String getStatusImage(int code) {
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(BASE_URL))
+                .uri(URI.create(BASE_URL + code + ".jpg"))
                 .GET().build();
         try {
             HttpResponse<Void> response = CLIENT.send(request, HttpResponse.BodyHandlers.discarding());
@@ -35,7 +35,7 @@ public class HttpStatusChecker {
 
     public static boolean isStatusValid(int code) {
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(BASE_URL))
+                .uri(URI.create(BASE_URL + code + ".jpg"))
                 .GET().build();
         try {
             HttpResponse<Void> response = CLIENT.send(request, HttpResponse.BodyHandlers.discarding());
