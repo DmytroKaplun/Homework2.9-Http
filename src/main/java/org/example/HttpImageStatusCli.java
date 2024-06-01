@@ -19,6 +19,7 @@ public class HttpImageStatusCli {
                 if (!isStatusValid(enter)) {
                     logger.warning("You entered an invalid status code\n" +
                             "There is no an image for this HTTP status: " + enter);
+                    scanner.next();
                 }
                 logger.info("a valid status code: " + enter);
                 HttpStatusImageDownloader.downloadStatusImage(enter);
