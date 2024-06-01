@@ -28,7 +28,7 @@ public class HttpStatusChecker {
 
         } catch (IOException | InterruptedException e) {
             Thread.currentThread().interrupt();
-            logger.log(Level.SEVERE, e, () -> "Error occurred while fetching image for status code: " + code);
+            logger.log(Level.SEVERE, e, () -> "Error occurred during status code validation: " + code);
         }
         return String.format("https://http.cat/%s.jpg", code);
     }
@@ -43,7 +43,8 @@ public class HttpStatusChecker {
                 return false;
             }
         } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
+            logger.log(Level.SEVERE, e, () -> "Error occurred during status code validation: " + code);
         }
         return true;
     }
